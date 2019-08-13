@@ -75,3 +75,14 @@ instance01({
 }).then(res => {
   console.log(res.data.message)
 })
+
+//封装 request 模块
+import {request} from './network/request'
+
+request({
+  url:'/getProduct'
+},res => {
+  console.log(res)
+},err => {
+  console.log(err)
+})
