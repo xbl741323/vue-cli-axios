@@ -79,10 +79,18 @@ instance01({
 //封装 request 模块
 import {request} from './network/request'
 
+// request({
+//   url:'/getProduct'
+// },res => {
+//   console.log(res)
+// },err => {
+//   console.log(err)
+// })
+
 request({
   url:'/getProduct'
-},res => {
+}).then(res => {
   console.log(res)
-},err => {
+}).catch(err => {
   console.log(err)
 })
