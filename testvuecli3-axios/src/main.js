@@ -27,7 +27,7 @@ axios({
   console.log(result.data)
 })
 
-//axios多层调用
+//axios发送并发请求
 axios.all([axios({
 url:'http://localhost:3300/getProduct',
 method:'get'
@@ -40,3 +40,18 @@ method:'get'
 })]).then(results => {
   console.log(results)
 })
+
+//调用axios中的spread方法分割数组数据
+axios.all([axios({
+  url:'http://localhost:3300/getProduct',
+  method:'get'
+  }),axios({
+    url:'http://localhost:3300/getProductById',
+    params:{
+      id:2
+    },
+    method:'get'
+  })]).then(axios.spread((res1,res2) => {
+    console.log(res1)
+    console.log(res2)
+  }))
